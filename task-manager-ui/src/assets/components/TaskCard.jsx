@@ -11,12 +11,13 @@ const getTaskClass = (due_date) =>{
 
 
 const TaskCard = ({task}) => {
-  const { tasks, setTasks, } = useContext(UserContext)
+  const { tasks, setTasks, } = useContext(UserContext);
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   // toggle completed tasks
   console.log(task)
   const toggleComplete = async() =>{
     try{
-      const response = await fetch(`https://task-manager-backend-v30s.onrender.com/api/tasks/${task.id}/`, {
+      const response = await fetch(`${baseURL}/${task.id}/`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({completed: !task.completed})
@@ -35,7 +36,7 @@ const TaskCard = ({task}) => {
   // delete tasks
   const deleteTask = async () =>{
     try{
-      const response = await fetch(`https://task-manager-backend-v30s.onrender.com/api/tasks/${task.id}/`, {
+      const response = await fetch(`${baseURL}/${task.id}/`, {
         method: 'DELETE'
       })
       if (response.ok){

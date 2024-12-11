@@ -8,6 +8,7 @@ const AddTask = () => {
     const [dueDate, setDueDate] = useState('')
     const [category, setCategory] = useState('Work')
 
+    const baseURL = import.meta.env.VITE_API_BASE_URL
     const handleTask = async (e) =>{
         e.preventDefault();
         
@@ -15,7 +16,7 @@ const AddTask = () => {
             title, priority, due_date: dueDate, category, completed: false,
         }
         try{
-            const response = await fetch("https://task-manager-backend-v30s.onrender.com/api/tasks/", {
+            const response = await fetch(`${baseURL}/api/tasks/`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newTask)

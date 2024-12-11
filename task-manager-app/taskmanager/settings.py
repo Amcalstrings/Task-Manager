@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-cbad&q-cnh&2yw2*xz@qym9t4xp5jdle6q6c5lj(akf+679k_0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.getenv('RENDER_EXTERNAL_HOSTNAME', '')]
+ALLOWED_HOSTS = [os.getenv('RENDER_EXTERNAL_HOSTNAME', ''),
+                 os.getenv('VERCEL_DOMAIN', ''),]
 
 
 # Application definition
@@ -128,5 +129,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS= [
+    "https://amcal-task-manager.vercel.app/",
     "http://localhost:5173",
+    "http://localhost:5174",
     ]

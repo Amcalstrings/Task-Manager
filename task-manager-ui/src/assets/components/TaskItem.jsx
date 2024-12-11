@@ -3,11 +3,11 @@ import { UserContext } from '../../App'
 
 const TaskItem = ({task}) => {
     const { setTasks, } = useContext(UserContext);
-
+    const baseURL = import.meta.env.VITE_API_BASE_URL
     // toggle completed tasks
     const toggleCompleteTask = async() => {
         const updatedTask = {...task, completed: !task.completed};
-        await fetch(`http://127.0.0.1:8000/api/tasks/${task.id}`, {
+        await fetch(`${baseURL}/${task.id}`, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(updatedTask),

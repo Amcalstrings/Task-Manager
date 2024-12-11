@@ -15,7 +15,7 @@ const AddTask = () => {
             title, priority, due_date: dueDate, category, completed: false,
         }
         try{
-            const response = await fetch("http://127.0.0.1:8000/api/tasks/", {
+            const response = await fetch("https://task-manager-backend-v30s.onrender.com/api/tasks/", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newTask)

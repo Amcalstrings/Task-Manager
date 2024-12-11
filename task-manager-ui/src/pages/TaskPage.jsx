@@ -11,7 +11,7 @@ const TaskPage = () => {
     useEffect(() =>{
         const fetchTasks = async() =>{
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/tasks/');
+                const response = await fetch('https://task-manager-backend-v30s.onrender.com/api/tasks/');
                 if (response.ok){
                     const data = await response.json()
                     setTasks(data)

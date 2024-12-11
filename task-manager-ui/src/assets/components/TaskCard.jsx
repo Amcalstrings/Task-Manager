@@ -16,7 +16,7 @@ const TaskCard = ({task}) => {
   console.log(task)
   const toggleComplete = async() =>{
     try{
-      const response = await fetch(`http://127.0.0.1:8000/api/tasks/${task.id}/`, {
+      const response = await fetch(`https://task-manager-backend-v30s.onrender.com/api/tasks/${task.id}/`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({completed: !task.completed})
@@ -35,7 +35,7 @@ const TaskCard = ({task}) => {
   // delete tasks
   const deleteTask = async () =>{
     try{
-      const response = await fetch(`http://127.0.0.1:8000/api/tasks/${task.id}/`, {
+      const response = await fetch(`https://task-manager-backend-v30s.onrender.com/api/tasks/${task.id}/`, {
         method: 'DELETE'
       })
       if (response.ok){

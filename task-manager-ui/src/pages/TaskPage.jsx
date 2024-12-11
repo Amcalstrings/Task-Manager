@@ -11,7 +11,7 @@ const TaskPage = () => {
     useEffect(() =>{
         const fetchTasks = async() =>{
             try {
-                const response = await fetch(`${baseURL}`);
+                const response = await fetch(`${baseURL}/api/tasks/`);
                 if (response.ok){
                     const data = await response.json()
                     setTasks(data)

@@ -17,7 +17,7 @@ const TaskCard = ({task}) => {
   console.log(task)
   const toggleComplete = async() =>{
     try{
-      const response = await fetch(`${baseURL}/${task.id}/`, {
+      const response = await fetch(`${baseURL}/api/tasks/${task.id}/`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({completed: !task.completed})
@@ -36,7 +36,7 @@ const TaskCard = ({task}) => {
   // delete tasks
   const deleteTask = async () =>{
     try{
-      const response = await fetch(`${baseURL}/${task.id}/`, {
+      const response = await fetch(`${baseURL}/api/tasks/${task.id}/`, {
         method: 'DELETE'
       })
       if (response.ok){

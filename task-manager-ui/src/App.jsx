@@ -11,11 +11,11 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filter, setFilter] = useState('all')
-  
+  const baseURL = import.meta.env.VITE_API_BASE_URL
   // fetch tasks from backend
   useEffect(() =>{
     const fetchTasks = async() =>{
-      const response = await fetch("https://task-manager-backend-v30s.onrender.com/api/tasks/");
+      const response = await fetch(`${baseURL}}/api/tasks/`);
       const data = await response.json();
       setTasks(data)
     };

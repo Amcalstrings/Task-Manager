@@ -7,7 +7,7 @@ const TaskItem = ({task}) => {
     // toggle completed tasks
     const toggleCompleteTask = async() => {
         const updatedTask = {...task, completed: !task.completed};
-        await fetch(`${baseURL}/${task.id}`, {
+        await fetch(`${baseURL}/api/tasks/${task.id}`, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(updatedTask),
@@ -18,7 +18,7 @@ const TaskItem = ({task}) => {
     }
 
     const deleteTask = async() =>{
-        await fetch(`http://127.0.0.1:8000/api/tasks/${task.id}/`, {
+        await fetch(`${baseURL}}/api/tasks/${task.id}/`, {
             method: "DELETE",
         });
         setTasks((prev) => prev.filter((t) => t.id !== task.id))

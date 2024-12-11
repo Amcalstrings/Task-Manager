@@ -8,11 +8,11 @@ const getTaskClass = (due_date) =>{
   if (new Date(due_date) < new Date()) return "bg-red-100 border-red-500";
   return "bg-green-100 border-green-500"
 }
-
+const baseURL = import.meta.env.VITE_API_BASE_URL
 
 const TaskCard = ({task}) => {
   const { tasks, setTasks, } = useContext(UserContext);
-  const baseURL = import.meta.env.VITE_API_BASE_URL
+  
   // toggle completed tasks
   console.log(task)
   const toggleComplete = async() =>{

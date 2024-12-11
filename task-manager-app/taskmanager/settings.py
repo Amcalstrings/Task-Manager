@@ -27,7 +27,9 @@ SECRET_KEY = 'django-insecure-cbad&q-cnh&2yw2*xz@qym9t4xp5jdle6q6c5lj(akf+679k_0
 DEBUG = True
 
 ALLOWED_HOSTS = [os.getenv('RENDER_EXTERNAL_HOSTNAME', ''),
-                 os.getenv('VERCEL_DOMAIN', ''),]
+                 os.getenv('VERCEL_DOMAIN', ''),
+                 '127.0.0.1',
+                 'localhost']
 
 
 # Application definition

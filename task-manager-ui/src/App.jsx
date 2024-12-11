@@ -15,7 +15,7 @@ function App() {
   // fetch tasks from backend
   useEffect(() =>{
     const fetchTasks = async() =>{
-      const response = await fetch(`${baseURL}}/api/tasks/`);
+      const response = await fetch(`${baseURL}/api/tasks/`);
       const data = await response.json();
       setTasks(data)
     };

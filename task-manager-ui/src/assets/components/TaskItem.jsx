@@ -18,7 +18,7 @@ const TaskItem = ({task}) => {
     }
 
     const deleteTask = async() =>{
-        await fetch(`${baseURL}}/api/tasks/${task.id}/`, {
+        await fetch(`${baseURL}/api/tasks/${task.id}/`, {
             method: "DELETE",
         });
         setTasks((prev) => prev.filter((t) => t.id !== task.id))

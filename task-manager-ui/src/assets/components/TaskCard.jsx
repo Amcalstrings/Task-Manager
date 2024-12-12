@@ -14,7 +14,7 @@ const TaskCard = ({task}) => {
   const { tasks, setTasks, } = useContext(UserContext);
   
   // toggle completed tasks
-  console.log(task)
+  
   const toggleComplete = async() =>{
     try{
       const response = await fetch(`${baseURL}/api/tasks/${task.id}/`, {

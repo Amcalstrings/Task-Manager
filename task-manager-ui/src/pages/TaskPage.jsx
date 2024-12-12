@@ -28,7 +28,9 @@ const TaskPage = () => {
         
   return (
     <div className='p-6 dark:bg-gray-900 '>
-        <TypingEffect className='text-2xl text-grey-400 font-bold text-center dark:text-white' text='  Kindly enter your task(s) below' typingSpeed={100}/>
+        <div className='text-2xl text-grey-400 font-bold text-center dark:text-white' >
+            <TypingEffect text='Kindly enter your task(s) below' delay={100}/>
+        </div>
         <AddTask />
         <Legend />
         <div className='mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 '>

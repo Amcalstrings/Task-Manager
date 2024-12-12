@@ -1,33 +1,25 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from "react";
 
+import React from 'react'
 
-const TypingEffect = ({ text, typingSpeed=100, className='', }) => {
-    const [displayedText, setDisplayedText] = useState('');
-    // const [currentIndex, setCurrentIndex] = useState(0);
+const TypingEffect = ({text, delay}) => {
+    const [currentText, setCurrentText] = useState('');
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() =>{
-        setDisplayedText('');
-        // setCurrentIndex(0)
-
-        if(!text || typeof text !== "string") return;
         
-        let index = 0;
-        const interval = setInterval(() =>{
-            if(index < text.length){
-                setDisplayedText((prev) => prev + text.charAt(index));
-                index++;
-            }else{
-                clearInterval(interval)
-            }
+        if(currentIndex < text.length){
+            const timeout = setTimeout(() =>{
+                setCurrentText(prevText => prevText + text[currentIndex]);
+                setCurrentIndex(prevIndex => prevIndex + 1)
+            }, delay);
 
-        }, typingSpeed);
+            return () => clearTimeout(timeout)}
+        
 
-        return () => clearInterval(interval);
-    }, [text, typingSpeed])
-    
+    }, [currentIndex, delay, text])
   return (
-    <div className={`${className}`}>{displayedText}</div>
-    
+    <div>{currentText}</div>
   )
 }
 

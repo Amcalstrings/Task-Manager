@@ -5,7 +5,7 @@ import { UserContext } from '../../App';
 const ProgressTracker = () => {
     const { tasks} = useContext(UserContext)
     const completedTasks = tasks.filter((task) => task.completed).length;
-    const totalTasks = tasks.length
+    const totalTasks = tasks.length;
 
     const progressPercent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
   return (

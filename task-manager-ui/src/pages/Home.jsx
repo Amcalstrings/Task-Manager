@@ -7,13 +7,28 @@ import ProgressTracker from "../assets/components/ProgressTracker"
 import Legend from "../assets/components/Legend"
 import TypingEffect from "../assets/components/TypingEffect"
 
-const Home = ({task}) => {
-    const { tasks, setFilter, searchQuery, setSearchQuery } = useContext(UserContext);
+const Home = () => {
+    const { tasks, filter, setFilter, searchQuery, setSearchQuery } = useContext(UserContext);
 
     // Define categories and state for active category
     const categories = ['All', 'Work', 'Personal', 'Fitness', 'Other'];
     const [activeCategory, setActiveCategory] = useState('All');
-    const filteredTaskByCategory = activeCategory === 'All' ? tasks : tasks.filter((taskItem) => taskItem.category === activeCategory);
+      const filteredTasks = tasks.filter((task) =>{
+
+        const matchesCategory = activeCategory === 'All' || task.category == activeCategory;
+
+        const matchesFilter = 
+        filter === 'all' ||
+        (filter === 'completed' && task.completed) ||
+        (filter === 'pending'&& !task.completed);
+
+        const matchesSearch = !searchQuery || 
+        (task.title && typeof task.title === "string" && task.title.toLowerCase().includes(searchQuery.toLowerCase()))
+
+        return matchesCategory && matchesFilter && matchesSearch  
+      })
+
+    
   return (
     <>
     
@@ -25,10 +40,9 @@ const Home = ({task}) => {
     >
       
         <h1 className="text-5xl font-bold mb-4 text-blue-600 " >Welcome to Task Manager</h1>
-        {/* <p className="text-lg text-gray-700 mb-8 dark:text-white italic">
-          Organize your tasks efficiently, and track your progress in one place.
-        </p> */}
-        <TypingEffect text='  Organize your tasks efficiently, and track your progress in one place.' typingSpeed={100} className="text-lg text-gray-700 mb-8 dark:text-white italic"/>
+        <div className="text-lg text-gray-700 mb-8 dark:text-white italic">
+          <TypingEffect text='Organize your tasks efficiently, and track your progress in one place.' delay={100}/>
+        </div>
         <p className="text-lg dark:text-white">Do you have a new task?</p>
         <Link to="/tasks" 
         className="bg-blue-500 text-white px-4 py-2 rounded-lg text-lg shadow-lg hover:bg-blue-600 transition dark:text-white">
@@ -57,13 +71,13 @@ const Home = ({task}) => {
             >{cat}</button>
           ))}
         </div>
-          {filteredTaskByCategory.length > 0 ? ( <>
+          {filteredTasks.length > 0 ? ( <>
             <p className="text-lg dark:text-white">Track your task completion progress below?</p>
             <ProgressTracker />
             
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 dark:bg-gray-900 ">
           
-          {filteredTaskByCategory.map((taskItem) =>(
+          {filteredTasks.map((taskItem) =>(
             <motion.div 
             key={taskItem.id}
             initial={{ opacity:0, y:20 }}

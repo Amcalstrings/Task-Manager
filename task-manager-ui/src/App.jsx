@@ -23,17 +23,7 @@ function App() {
 
   }, [])
 
-    // filter tasks to determine if they are completed
-    // const filteredTasks = tasks.filter((task) =>{
-    //   if (filter === 'completed'){return task.completed};
-    //   if (filter === 'pending'){return !task.completed};
-    //   return true;
-    // })
-    // // console.log(filteredTasks)
-    // // search tasks
-    // const searchedTasks = filteredTasks.filter((task) =>
-    // task.title && typeof task.title === "string" && task.title.toLowerCase().includes(searchQuery.toLowerCase()))
-    // // console.log(searchedTasks)
+    
   return (
     <BrowserRouter >
       <UserContext.Provider value={{tasks, setTasks, filter, setFilter, searchQuery, setSearchQuery}}>

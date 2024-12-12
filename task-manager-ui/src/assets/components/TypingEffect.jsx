@@ -19,7 +19,7 @@ const TypingEffect = ({text, delay}) => {
 
     }, [currentIndex, delay, text])
   return (
-    <div>{currentText}</div>
+    <div className="font-semibold text-center ">{currentText}</div>
   )
 }
 

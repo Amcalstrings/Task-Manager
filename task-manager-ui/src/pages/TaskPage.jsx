@@ -27,8 +27,8 @@ const TaskPage = () => {
     }, [])
         
   return (
-    <div className='p-6 dark:bg-gray-900 '>
-        <div className='text-2xl text-grey-400 font-bold text-center dark:text-white' >
+    <div className='p-6 dark:bg-gray-900 w-[90%] mx-[5%]'>
+        <div className='text-2xl text-grey-400 font-bold text-center dark:text-white italic' >
             <TypingEffect text='Kindly enter your task(s) below' delay={100}/>
         </div>
         <AddTask />

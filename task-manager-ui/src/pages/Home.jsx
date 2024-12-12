@@ -33,14 +33,14 @@ const Home = () => {
     <>
     
     <motion.div 
-    className=" bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center"
+    className=" bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center w-[90%] mx-[5%]"
     initial={{ opacity: 0, y: 50 }}
     animate={{opacity: 3, y: 0}}
     transition={{duration: 3}}
     >
       
-        <h1 className="text-5xl font-bold mb-4 text-blue-600 " >Welcome to Task Manager</h1>
-        <div className="text-lg text-gray-700 mb-8 dark:text-white italic">
+        <h1 className="mx-auto text-5xl font-bold mb-4 text-blue-600 text-center" >Welcome to Task Manager</h1>
+        <div className="text-lg text-gray-700 mb-8 dark:text-white italic ">
           <TypingEffect text='Organize your tasks efficiently, and track your progress in one place.' delay={100}/>
         </div>
         <p className="text-lg dark:text-white">Do you have a new task?</p>
@@ -61,7 +61,7 @@ const Home = () => {
           </select>
         </div>
         <Legend />
-        <div className="flex space-x-4 mb-4">
+        <div className="flex space-x-4 mb-4 ">
           {categories.map((cat) =>
           (
             <button
